@@ -25,7 +25,7 @@ namespace WebShopDemo.Infrastructure
             SeedCategories(dataCategory);
             
             var dataBrand = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            SeedCategories(dataBrand);
+            SeedBrands(dataBrand);
 
             return app;
         }
@@ -70,6 +70,34 @@ namespace WebShopDemo.Infrastructure
                     userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
             }
+        }
+        private static void SeedCategories(ApplicationDbContext dataCategory)
+        {
+            if (dataCategory.Categories.Any())
+            {
+                return;
+            }
+            dataCategory.Categories.AddRange(new[]
+            {
+                new Category {CategoryName="Laptop"},
+                new Category {CategoryName="Computer"},
+                new Category {CategoryName="TV"},
+            });
+            dataCategory.SaveChanges();
+        }
+        private static void SeedBrands(ApplicationDbContext dataBrand)
+        {
+            if (dataBrand.Brands.Any())
+            {
+                return;
+            }
+            dataBrand.Brands.AddRange(new[]
+            {
+                new Brand {BrandName="Acer"},
+                new Brand {BrandName="Asus"},
+                new Brand {BrandName="Samsung"},
+            });
+            dataBrand.SaveChanges();
         }
     }
  }

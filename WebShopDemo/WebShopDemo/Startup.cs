@@ -11,9 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShopDemo.Abstraction;
 using WebShopDemo.Data;
 using WebShopDemo.Domain;
 using WebShopDemo.Infrastructure;
+using WebShopDemo.Services;
 
 namespace WebShopDemo
 {
@@ -36,6 +38,8 @@ namespace WebShopDemo
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IBrandService, BrandServise>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseLazyLoadingProxies()
