@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using WebShopDemo.Models.Product;
 
 namespace WebShopDemo.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ProductController : Controller
     {
         private readonly IProductService productService;
@@ -63,6 +65,7 @@ namespace WebShopDemo.Controllers
         }
 
         // GET: ProductController/Index=All
+        [AllowAnonymous]
         public ActionResult Index(string searchStringCategoryName, string searchStringBrandName)
         {
             List<ProductIndexVM> products = productService.GetProducts(searchStringCategoryName, searchStringBrandName)
@@ -142,6 +145,7 @@ namespace WebShopDemo.Controllers
         }
 
         // GET: ProductController/Details
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             Product item = productService.GetProductById(id);

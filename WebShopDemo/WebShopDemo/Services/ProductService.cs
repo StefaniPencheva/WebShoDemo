@@ -70,7 +70,7 @@ namespace WebShopDemo.Services
             {
                 return false;
             }
-            _context.Products.Add(product);
+            _context.Products.Remove(product);
             return _context.SaveChanges() != 0;
         }
 
