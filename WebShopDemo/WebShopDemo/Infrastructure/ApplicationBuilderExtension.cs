@@ -81,7 +81,7 @@ namespace WebShopDemo.Infrastructure
             {
                 new Category {CategoryName="Laptop"},
                 new Category {CategoryName="Computer"},
-                new Category {CategoryName="TV"},
+                new Category {CategoryName="TV"}
             });
             dataCategory.SaveChanges();
         }
@@ -95,7 +95,7 @@ namespace WebShopDemo.Infrastructure
             {
                 new Brand {BrandName="Acer"},
                 new Brand {BrandName="Asus"},
-                new Brand {BrandName="Samsung"},
+                new Brand {BrandName="Samsung"}
             });
             dataBrand.SaveChanges();
         }

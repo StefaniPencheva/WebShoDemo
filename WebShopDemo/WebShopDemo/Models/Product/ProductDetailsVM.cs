@@ -1,33 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebShopDemo.Domain
+namespace WebShopDemo.Models.Product
 {
-    public class Product
+    public class ProductDetailsVM
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(30)]
+
+        [Display(Name = "Product Name")]
         public string ProductName { get; set; }
-        [Required]
+
         public int BrandId { get; set; }
-        public virtual Brand Brand { get; set; }
-        [Required]
+        [Display(Name = "Brand")]
+        public string BrandName { get; set; }
+
+
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        [Display(Name = "Category")]
+        public string CategoryName { get; set; }
+        
+        [Display(Name = "Picture")]
         public string Picture { get; set; }
 
-        [Required]
-        [Range(0, 5000)]
+        [Display(Name = "Quantity")]
         public int Quantity { get; set; }
-        [Required]
+
+        [Display(Name = "Price")]
         public decimal Price { get; set; }
+
+        [Display(Name = "Discount")]
         public decimal Discount { get; set; }
-        public virtual IEnumerable<Order> Orders { get; set; } = new List<Order>();
     }
 }

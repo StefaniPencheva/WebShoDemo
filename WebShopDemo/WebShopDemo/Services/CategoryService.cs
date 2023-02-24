@@ -18,8 +18,8 @@ namespace WebShopDemo.Services
         }
         public List<Category> GetCategories()
         {
-            List<Category> category = _context.Categories.ToList();
-            return category;
+            List<Category> categories = _context.Categories.ToList();
+            return categories;
         }
 
         public Category GetCategoryById(int categoryId)

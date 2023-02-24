@@ -8,6 +8,7 @@ namespace WebShopDemo.Domain
 {
     public class Category
     {
+
         public int Id { get; set; }
         [Required]
         [MaxLength(30)]

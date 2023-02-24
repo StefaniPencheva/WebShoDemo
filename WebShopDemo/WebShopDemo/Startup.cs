@@ -40,6 +40,7 @@ namespace WebShopDemo
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IBrandService, BrandServise>();
+            services.AddTransient<IProductService, ProductService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseLazyLoadingProxies()
