@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,6 +12,7 @@ using WebShopDemo.Models.Order;
 
 namespace WebShopDemo.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -43,6 +45,7 @@ namespace WebShopDemo.Controllers
             return View(orders);
         }
 
+        [AllowAnonymous]
         //Pokazva samo poruchkite na potrebitel i tursi po ime na product
         public IActionResult MyOrders(string searchString)
         {
@@ -77,6 +80,7 @@ namespace WebShopDemo.Controllers
             return View(orders);
         }
 
+        [AllowAnonymous]
         //Raboti na GET zaqvka predlaga potvurjdenie na product
         public ActionResult Create(int productId, int quantity)
         {
@@ -105,6 +109,7 @@ namespace WebShopDemo.Controllers
             return View(orderForDb);
         }
 
+        [AllowAnonymous]
         //POST: OrderController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
