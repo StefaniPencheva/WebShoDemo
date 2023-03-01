@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebShopDemo.Models.Product.ProductIndexVM>
+﻿@using WebShopDemo.Models.Order
+@model IEnumerable<WebShopDemo.Models.Product.ProductIndexVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -102,17 +103,17 @@
                         })
                     </td>
                  }
-                <td>
-                    @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    }
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    |@if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
-                    {
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    }
-                </td>
+            <td>
+                @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                }|
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                }
+            </td>
             </tr>
         }
     </tbody>
