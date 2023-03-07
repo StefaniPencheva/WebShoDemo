@@ -32,9 +32,7 @@
                         }
                             @if ((this.User.Identity.IsAuthenticated) && (this.User.IsInRole("Administrator")))
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Orders</a>
-                                </li>
+                                
                                 <li class="nav-item active">
                                     <div class="dropdown show">
                                         <a class="nav-link active dropdown-toggle" href="#"
@@ -47,6 +45,7 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                             <a class="dropdown-item" asp-controller="Client" asp-action="Index">Clients</a>
                                             <a class="dropdown-item" asp-controller="Order" asp-action="Index">Orders</a>
+                                            <a class="dropdown-item" asp-controller="Statistics" asp-action="Index">Statistics</a>
                                         </div>
                                     </div>
                                 </li>

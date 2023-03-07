@@ -38,9 +38,7 @@ namespace WebShopDemo
 
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddTransient<ICategoryService, CategoryService>();
-            services.AddTransient<IBrandService, BrandServise>();
-            services.AddTransient<IProductService, ProductService>();
+            
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseLazyLoadingProxies()
@@ -52,9 +50,12 @@ namespace WebShopDemo
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-
             services.AddControllersWithViews();
+
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IBrandService, BrandServise>();
+            services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
 
             services.AddRazorPages();
             services.Configure<IdentityOptions>(option =>
